@@ -12,7 +12,7 @@
 
 
 ### Testing execution time
-$T_{total} = T_{load \ model} + n * ( T_{read} + T_{process} + T_{write} )$ , where $n$ is testing image amount.
+ $T_{total} = T_{load \ model} + n * ( T_{read} + T_{process} + T_{write} )$  , where $n$ is testing image amount.
 
 
 [How to divide execution time (code)](https://www.notion.so/How-to-divide-execution-time-code-9538f9190c06425ba5be58c327b27a7a)
