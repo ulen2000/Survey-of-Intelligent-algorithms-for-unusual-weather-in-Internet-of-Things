@@ -177,6 +177,7 @@ You had better save every `csv` file in each corresponding save_path.
 * VIF (Visual Quality) [[PDF]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1576816) [[Matlab Code]](http://sse.tongji.edu.cn/linzhang/IQA/Evalution_VIF/eva-VIF.htm)
 * FSIM (Feature Similarity) [[PDF]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5705575) [[Matlab Code]](http://sse.tongji.edu.cn/linzhang/IQA/FSIM/FSIM.htm))
 
+**In the paper we design and combine the full-reference and no-feference metrics in python file and matlab file,each of them will output the data to a csv file.**
 
 
 
