@@ -4,12 +4,7 @@
 
 | Algorithms | Paper Link | Projects Link |  
 | ------------------- | ------------------------------------------------------- | ------------------- |
-|   GMM    | [Paper Link](http://openaccess.thecvf.com/content_cvpr_2016/papers/Li_Rain_Streak_Removal_CVPR_2016_paper.pdf)         | [Code Link](https://drive.google.com/file/d/0B5QI9xdWo2K6a2xvWGZGeUVoRlhUQmg1SGtqdjhYdXV1UC1j)   |  
 |   DDN    | [Paper Link](http://openaccess.thecvf.com/content_cvpr_2017/papers/Fu_Removing_Rain_From_CVPR_2017_paper.pdf)   |[Code Link](https://github.com/XMU-smartdsp/Removing_Rain)                 |  
-|   JORDER | [Paper Link](http://openaccess.thecvf.com/content_cvpr_2017/papers/Yang_Deep_Joint_Rain_CVPR_2017_paper.pdf)    | [Code Link](http://www.icst.pku.edu.cn/struct/Projects/joint_rain_removal.html)             |   
-|  ID-CGAN | [Paper Link](https://arxiv.org/abs/1701.05957)    |  [Code Link](https://github.com/TrinhQuocNguyen/Edited_Original_IDCGAN)  | 
-| DerainDrop | [Paper Link](https://arxiv.org/abs/1711.10098)       | [Code Link](https://github.com/rui1996/DeRaindrop)     |   
-| DID-MDN    | [Paper Link](https://arxiv.org/abs/1802.07412)    | [Code Link](https://github.com/hezhangsprinter/DID-MDN)    | 
 | DerainNet    | [Paper Link](https://arxiv.org/abs/1609.02087 )    | [Code Link](https://xueyangfu.github.io/projects/tip2017.html)    | 
 | LPNet    | [Paper Link](https://arxiv.org/abs/1805.06173)    | [Code Link](https://xueyangfu.github.io/projects/LPNet.html)    | 
 | PReNet    | [Paper Link](https://arxiv.org/abs/1901.09221)    | [Code Link](https://github.com/csdwren/PReNet)    | 
