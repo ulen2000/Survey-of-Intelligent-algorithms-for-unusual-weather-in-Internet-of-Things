@@ -17,6 +17,8 @@
 
 [How to divide execution time (code)](https://www.notion.so/How-to-divide-execution-time-code-9538f9190c06425ba5be58c327b27a7a)
 
+**When you test the following algorithms, please modify the testing_data_path and save_path like here. 👇**
+
 ground_data_path: `/home/ubuntu/code/datasets/test/$dataset_name$/ground_truth`
 
 testing_data_path: `/home/ubuntu/code/datasets/test/$dataset_name$/rainy_image`
