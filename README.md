@@ -17,6 +17,128 @@
 
 [How to divide execution time (code)](https://www.notion.so/How-to-divide-execution-time-code-9538f9190c06425ba5be58c327b27a7a)
 
+ground_data_path: `/home/ubuntu/code/datasets/test/$dataset_name$/ground_truth`
+
+testing_data_path: `/home/ubuntu/code/datasets/test/$dataset_name$/rainy_image`
+
+save_path:  `/home/ubuntu/code/results/$dataset_name$/$algorithm_name$`
+
+`$dataset_name$` includes  `Rain100H` , `Rain100L` , `Rain12` , and `Rain1400`.
+
+You had better save every `csv` file in each corresponding save_path.
+
+<details>
+  <summary>How to write data to a csv file in Python?</summary>
+  <pre><blockcode> 
+
+    
+    import csv
+
+    # Configure headers
+
+    headers = ['image', 'read_time', 'process_time', 'write_time']
+    rows = []
+
+    # Process loop...
+
+    item = {"image":img_name,"read_time":read_dur_time, "process_time":process_dur_time, "write_time": write_dur_time }
+    rows.append(item)
+
+    # Final statistics
+    rows.append({"image": "average" , "read_time":avg_read_time, "process_time":avg_process_time, "write_time": avg_write_time})
+    rows.append({"image": "load_model_time", "read_time" : load_model_time})
+    rows.append({"image": "total_time", "read_time" : total_time})
+
+    # Output to a csv file
+
+    with open( opt.save_path +'/time_result.csv','w') as f:
+    		f_csv = csv.DictWriter(f, headers)
+    		f_csv.writeheader()
+    		f_csv.writerows(rows)
+    
+      </blockcode></pre>
+</details>
+    
+<details>
+  <summary>How to write data to a csv file in MATLAB?</summary>
+  <pre><blockcode> 
+
+    
+    - **How to write data to a `csv` file in MATLAB**?
+
+    
+    %%%%%%%%%%%%%%%%%%%%%%
+    % Test code for the paper:
+    % X. Fu, J. Huang, D. Zeng, Y. Huang, X. Ding and J. Paisley. "Removing Rain from Single Images via a Deep Detail Network", CVPR, 2017
+    %
+    % NOTE: The MatConvNet toolbox has been installed with CUDA 7.5 and 64-bit windows 10
+    % You may need to re-install MatConvNet for your own computer configuration: http://www.vlfeat.org/matconvnet/
+    % This code is for demo only and the result can be slightly different from the paper due to transferring across platforms
+    %%%%%%%%%%%%%%%%%%%%%%
+    clc;
+    clear;
+    t0=clock;
+    process_time=[];
+    total_write_time=[];
+    total_read_time=[];
+    file_path1= 'F:\BaiduNetdiskDownload\datasets\Rain1400\rainy_image\';
+    img_path_list1 = dir(strcat(file_path1,'*.jpg'));
+    img_num = length(img_path_list1);
+    I = cell(img_num,1);
+    OutputDir = 'C:\Users\admin\Desktop\CVPR17\CVPR17\result\Rain1400\';
+    addpath 'fast-guided-filter-code-v1'
+    %run('matconvnet\matlab\vl_setupnn')
+    t3=clock;
+    run '.\matconvnet\matlab\vl_setupnn'
+    load('network.mat'); % load trained model
+    t4=clock;
+    load_model_time=etime(t4,t3);
+    disp(['load_model_time is ', num2str(load_model_time) ])
+    use_gpu = 1; % GPU: 1, CPU: 0
+    %%% parameters of guidedfilter
+    r = 16;
+    eps = 1;
+    s = 4;
+    %%%
+    if img_num > 0
+    for j = 1:img_num
+    read_start_time=clock;
+    image_name1 = img_path_list1(j).name;
+    %disp('deraining...')
+    I{j}=image_name1;
+    input_photo = imread(strcat(file_path1,image_name1));
+    read_end_time=clock;
+    read_dur_time=etime(read_end_time,read_start_time);
+    total_read_time=[total_read_time,eval(num2str(read_dur_time))];
+    process_start_time =clock;
+    input = im2double(input_photo);
+    base_layer = zeros(size(input)); % base layer
+    base_layer(:, :, 1) = fastguidedfilter(input(:, :, 1), input(:, :, 1), r, eps, s);
+    base_layer(:, :, 2) = fastguidedfilter(input(:, :, 2), input(:, :, 2), r, eps, s);
+    base_layer(:, :, 3) = fastguidedfilter(input(:, :, 3), input(:, :, 3), r, eps, s);
+    detail_layer = input - base_layer; % detail layer
+    output = processing( input, detail_layer, model, use_gpu ); % perform de-raining
+    process_end_time =clock;
+    process_dur_time = etime(process_end_time,process_start_time);
+    process_time=[process_time,eval(num2str(process_dur_time))];
+    disp([erase(image_name1,'.jpg'), '_result.jpg', ' image process time is ', num2str(process_dur_time) ])
+    write_start_time =clock;
+    imwrite(output,[OutputDir, erase(image_name1,'.jpg'), '_result.jpg']);
+    %disp('derain completed')
+    write_end_time = clock;
+    write_dur_time = etime(write_end_time,write_start_time);
+    total_write_time=[total_write_time,eval(num2str(write_dur_time))];
+    end
+    end
+    columns = {'imagename', 'read_time', 'process_time','write_time'};
+    total_read_time=total_read_time';
+    process_time=process_time';
+    total_write_time=total_write_time';
+    data = table(I, total_read_time, process_time,total_write_time,'VariableNames',columns);
+    writetable(data, 'Rain1400.csv')
+    disp(['total_time：',num2str(etime(clock,t0))]);
+    
+</details>
 
 ## 2. Detection Code and Model
 
