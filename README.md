@@ -1,6 +1,6 @@
 # Survey-of-Intelligent-algorithms-for-unusual-weather-in-Internet-of-Things
 
-## 1. Derain algorithms'Code in paper
+## 1.The derain algorithms we used in paper
 
 | Algorithms | Paper Link | Projects Link |  
 | ------------------- | ------------------------------------------------------- | ------------------- |
