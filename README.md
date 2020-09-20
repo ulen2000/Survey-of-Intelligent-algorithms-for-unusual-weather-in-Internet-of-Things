@@ -11,6 +11,11 @@
 | GP-based SSL    | [Paper Link](https://arxiv.org/abs/2006.05580)    | [Code Link](https://github.com/rajeevyasarla/Syn2Real)    | 
 
 
+### Testing execution time
+$T_{total} = T_{load \ model} + n * ( T_{read} + T_{process} + T_{write} )$ , where $n$ is testing image amount.
+
+
+[How to divide execution time (code)](https://www.notion.so/How-to-divide-execution-time-code-9538f9190c06425ba5be58c327b27a7a)
 
 
 ## 2. Detection Code and Model
@@ -36,13 +41,19 @@
 
 **We note that*:
 
-*i. **RainTrainL/Rain100L** and **RainTrainH/Rain100H** are synthesized by [Yang Wenhan](https://github.com/flyywh). **Rain12600/Rain1400** is from [Fu Xueyang](https://xueyangfu.github.io/) and **Rain12** is from [Li Yu](http://yu-li.github.io/).*
+**RainTrainL/Rain100L** and **RainTrainH/Rain100H** are synthesized by [Yang Wenhan](https://github.com/flyywh).
+*  RainTrainH has 1800 rainy images for training, and Rain100H has 100 rainy images for testing.
+**Rain12600/Rain1400** is from [Fu Xueyang](https://xueyangfu.github.io/) and **Rain12** is from [Li Yu](http://yu-li.github.io/).*
+* Rain12600 and Rain1400 contains 1,000 clean images. Each clean image was used to generate 14 rainy images with different streak orientations and magnitudes.Rain12600 has 900 clean images for "training" and Rain1400 has 100 clean images for "testing".
+* Rain12  only includes 12 rainy images
 
 ##  4. Image Quality Metrics
 * PSNR (Peak Signal-to-Noise Ratio) [[PDF]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4550695) [[Matlab Code]](https://www.mathworks.com/help/images/ref/psnr.html) [[Python Code]](https://github.com/aizvorski/video-quality)
 * SSIM (Structural Similarity) [[PDF]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1284395) [[Matlab Code]](http://www.cns.nyu.edu/~lcv/ssim/ssim_index.m) [[Python Code]](https://github.com/aizvorski/video-quality/blob/master/ssim.py)
 * VIF (Visual Quality) [[PDF]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1576816) [[Matlab Code]](http://sse.tongji.edu.cn/linzhang/IQA/Evalution_VIF/eva-VIF.htm)
 * FSIM (Feature Similarity) [[PDF]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5705575) [[Matlab Code]](http://sse.tongji.edu.cn/linzhang/IQA/FSIM/FSIM.htm))
+
+
 
 
 ## 5. Some related algorithms and Paper Link
